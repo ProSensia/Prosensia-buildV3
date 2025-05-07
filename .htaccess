@@ -2,13 +2,14 @@
     RewriteEngine On
     RewriteBase /
 
-    # Redirect index.html to /
+    # Redirect index.html to the root (main panel)
     RewriteCond %{THE_REQUEST} /index\.html [NC]
-    RewriteRule ^index\.html$ / [L,R=301]
+    RewriteRule ^index\.html$ / [R=301,L]
 
-    RewriteRule ^index\.html$ - [L]
+    # Redirect other requests to index.html
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteCond %{REQUEST_FILENAME} !-d
     RewriteRule . /index.html [L]
 </IfModule>
+
 
